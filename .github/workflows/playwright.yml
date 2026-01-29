@@ -25,3 +25,9 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npm run pw:test -- ${{ inputs.testOptions }}
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
