@@ -2,6 +2,8 @@ name: Playwright Tests
 on: workflow_dispatch
 jobs:
   myTest:
+    env:
+      BASE_URL: "https://qauto.forstudy.space"
     name: Running tests
     timeout-minutes: 60
     runs-on: ubuntu-latest
@@ -15,4 +17,4 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npm run pw:test

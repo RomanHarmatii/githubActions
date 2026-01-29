@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "pw:test": "npx playwright test",
+    "pw:test": "npx playwright test --project=default",
     "pw:test:ui": "npx playwright test --ui"
   },
   "author": "",
