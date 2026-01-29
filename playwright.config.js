@@ -62,7 +62,7 @@ export default defineConfig({
       name: "staging",
       use: {
         //@ts-ignore
-        baseURL: stagingEnv.BASE_URL,
+        baseURL: process.env.BASE_URL,
       },
     },
 
