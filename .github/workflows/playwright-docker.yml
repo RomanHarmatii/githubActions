@@ -18,6 +18,6 @@ jobs:
       env:
         BASE_URL: ${{ secrets.BASE_URL }}
     - name: Building Docker Image
-      run: docker build -t playwright-test-image .
+      run: docker build  --build-arg BASE_URL=${{ secrets.BASE_URL }} -t playwright-test-image .
     - name: Running Docker
       run: docker run playwright-test-image
