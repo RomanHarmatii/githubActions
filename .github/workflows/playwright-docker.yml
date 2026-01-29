@@ -9,14 +9,14 @@ on:
         type: string
 jobs:
   myTest:
-    env:
-      BASE_URL: ${{ secrets.BASE_URL }}
     name: Running tests
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: docker/setup-docker-action@v4
+      env:
+        BASE_URL: ${{ secrets.BASE_URL }}
     - name: Building Docker Image
       run: docker build -t playwright-test-image .
     - name: Running Docker
