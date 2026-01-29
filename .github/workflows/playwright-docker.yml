@@ -1,0 +1,5 @@
+name: 'Playwright Tests in Docker'
+on: workflow_dispatch
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
