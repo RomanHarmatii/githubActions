@@ -3,7 +3,7 @@ on: workflow_dispatch
 jobs:
   myTest:
     env:
-      BASE_URL: "https://qauto.forstudy.space"
+      BASE_URL: ${{ secrets.BASE_URL }}
     name: Running tests
     timeout-minutes: 60
     runs-on: ubuntu-latest
