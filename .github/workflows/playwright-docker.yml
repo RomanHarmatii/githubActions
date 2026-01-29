@@ -1,5 +1,23 @@
-name: 'Playwright Tests in Docker'
-on: workflow_dispatch
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
+name: Playwright Tests Docker
+on: 
+  workflow_dispatch:
+    inputs:
+      testOptions:
+        description: 'Test options'
+        default: ''
+        required: false
+        type: string
+jobs:
+  myTest:
+    env:
+      BASE_URL: ${{ secrets.BASE_URL }}
+    name: Running tests
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: docker/setup-docker-action@v4
+    - name: Building Docker Image
+      run: docker build -t playwright-test-image .
+    - name: Running Docker
+      run: docker run playwright-test-image
