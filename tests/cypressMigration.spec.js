@@ -58,20 +58,11 @@ test.describe("Test", () => {
     // }
     // console.log(carIds);
     // console.log(carIds);
-    await page.route("/api/users/profile", async (route, request) => {
-      await route.fulfill({
-        status: 200,
-        contentType: "application/json",
-        body: JSON.stringify({
-          status: "ok",
-          data: {
-            userId: 323500,
-            photoFilename: "default-user.png",
-            name: "My Test Name",
-            lastName: "My Test Last Name",
-          },
-        }),
-      });
+    await page.route("/api/users/profile", async (route) => {
+      const response = await route.fetch();
+      const json = await response.json();
+      json.data.name = "Hello";
+      await route.fulfill({ response, json });
     });
 
     await page.goto("/");
@@ -83,7 +74,7 @@ test.describe("Test", () => {
     await page.locator('[class^="dropdown-item"]').getByText("Profile").click();
 
     await expect(page.locator("[class^='profile_name']")).toContainText(
-      "My Test Name My Test Last Name",
+      "Hello",
     );
   });
 });
