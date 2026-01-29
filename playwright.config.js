@@ -4,16 +4,10 @@ import dotenv from "dotenv";
 
 // const localEnv = "prod";
 //@ts-ignore
-function loadEnvData(env) {
-  const result = dotenv.config({
-    path: `.env.${env}`,
-  });
+dotenv.config({
+  path: `.env`,
+});
 
-  return result.parsed;
-}
-
-const prodEnv = loadEnvData("prod");
-const stagingEnv = loadEnvData("staging");
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -61,7 +55,7 @@ export default defineConfig({
       name: "default",
       use: {
         //@ts-ignore
-        baseURL: prodEnv.BASE_URL,
+        baseURL: process.env.BASE_URL,
       },
     },
     {
