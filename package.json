@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "pw:test": "npx playwright test --project=default",
-    "pw:test:ui": "npx playwright test --ui"
+    "pw:test:ui": "npx playwright test --ui",
+    "test:playwright": "node setup.js && npx playwright test"
   },
   "author": "",
   "license": "ISC",
@@ -21,3 +22,4 @@
     "allure": "^3.0.1"
   }
 }
+
