@@ -1,0 +1,27 @@
+---
+description: Page object and fixture patterns
+globs: "Helpers/Page Objects/**/*.js", "Helpers/Fixtures/**/*.js"
+alwaysApply: false
+---
+
+# Page Objects and Fixtures
+
+## Page objects
+
+- Extend `BasePage`; define `url` at the top; use `constructor(page)` and call `super(page, url)`.
+- Expose elements via getters (no args) or methods (with args), e.g. `get heading` vs `listButton(text)`.
+- When creating Elements (Button, TextArea, BaseElement), always pass a single options object, not positional args.
+
+```javascript
+// BAD
+return new TextArea(this.page, "#couponCode1");
+
+// GOOD
+return new TextArea({ page: this.page, selector: "#couponCode1" });
+return new Button({ page: this.page, text: "Save" });
+```
+
+## Fixtures
+
+- Use `test.extend({ ... })` from `@playwright/test`; create the page object from `page`, then call `use(fixture)` in the fixture function.
+- Fixture names are camelCase (e.g. `homePage`).

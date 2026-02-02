@@ -5,4 +5,8 @@ export default class {
       ? this.page.locator(selector)
       : this.page.getByText(text, { exact: true });
   }
+
+  get locator() {
+    return this._element;
+  }
 }

@@ -1,0 +1,28 @@
+---
+description: Element and component constructor and usage
+globs: "Helpers/Elements/**/*.js", "Helpers/Components/**/*.js"
+alwaysApply: false
+---
+
+# Elements and Components
+
+## Elements
+
+- Constructor takes a **single options object**: `{ page, selector, text }`. Use either `selector` or `text` for one element, not both.
+- The locator is stored in `this._element` (set in `BaseElement`).
+- `Button` extends `BaseElement` and adds `click()`; `TextArea` extends `Button` and adds `type()`, `hasValue()`.
+- When creating Elements from page objects or components, always pass one object.
+
+```javascript
+// BAD
+new Button(this.page, '[class="navbar-brand"]');
+
+// GOOD
+new Button({ page: this.page, selector: '[class="navbar-brand"]' });
+new Button({ page: this.page, text: "Get started" });
+```
+
+## Components
+
+- Receive `page` (or an options object) in the constructor; compose Elements.
+- When creating Elements inside components, use the same object form: `{ page: this.page, selector: "..." }` or `{ page: this.page, text: "..." }`.

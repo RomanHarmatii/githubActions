@@ -1,0 +1,11 @@
+---
+description: Playwright E2E project context and layout
+alwaysApply: true
+---
+
+# Project Context
+
+- **Stack**: Playwright (`@playwright/test`), ES modules (`"type": "module"` in package.json), dotenv for environment variables.
+- **Folders**: Tests live in `tests/`; shared code in `Helpers/` with subfolders `Page Objects`, `Elements`, `Components`, `Fixtures`.
+- **Naming**: PascalCase for page objects, elements, and components (e.g. `HomePage`, `Button`, `Header`); camelCase for fixture names (e.g. `homePage`).
+- **Config**: `playwright.config.js` uses `testDir: "./tests"` and `baseURL` from env. Do not change testDir or break ESM (no CommonJS require in new code).

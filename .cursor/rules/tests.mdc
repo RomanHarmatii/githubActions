@@ -1,0 +1,12 @@
+---
+description: Test file and fixture usage
+globs: "tests/**/*.spec.js"
+alwaysApply: false
+---
+
+# Tests
+
+- Specs live in `tests/`; file pattern is `*.spec.js`.
+- Use `test` and `expect` from `@playwright/test`, or import `test` from the project fixture (e.g. `import test from "../Helpers/Fixtures/homePage.js"`) when using custom fixtures.
+- Prefer page objects and elements from Helpers over raw `page.locator()` when a corresponding page object exists.
+- Use `test.describe` and `test.beforeEach` for setup where needed; assertions use `expect` from Playwright.
